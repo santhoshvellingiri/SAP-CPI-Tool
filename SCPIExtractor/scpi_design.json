@@ -1,0 +1,1004 @@
+[
+  {
+    "DisplayName": "ITDS Common",
+    "TechnicalName": "ITDSCommon",
+    "CreatedBy": "S0020363350",
+    "CreatedAt": "04/01/2020 09:40:21",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "Maintain_Global_Variables",
+        "Name": "Maintain_Global_Variables",
+        "Version": "1.0.4",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "04/05/2020 15:23:14",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "04/05/2020 15:23:38",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "ITDS Utility",
+    "TechnicalName": "ITDSUtility",
+    "CreatedBy": "S0019796350",
+    "CreatedAt": "03/24/2020 11:17:56",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "Email_FromJMS_SendToRecipients",
+        "Name": "Email_FromJMS_SendToRecipients",
+        "Version": "1.0.6",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 11:17:56",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:17:56",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Email_FromBackup_ToJMS",
+        "Name": "Email_FromServiceBus_ToJMS",
+        "Version": "1.0.2",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "04/05/2020 15:37:07",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "04/05/2020 15:37:07",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Email_FromJMS_ToDB",
+        "Name": "Email_FromJMS_ToDB",
+        "Version": "1.0.9",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "04/05/2020 15:37:19",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "04/05/2020 15:37:19",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Email_FromDB_ToJMS",
+        "Name": "Email_FromDB_ToJMS",
+        "Version": "1.0.17",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 11:17:56",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:17:56",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "LogToSplunk_FromJMS_Simplified",
+        "Name": "LogToSplunk_FromJMS_Simplified",
+        "Version": "1.0.28",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 11:17:56",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:17:56",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "Monitoring Applications",
+    "TechnicalName": "MonitoringApplications",
+    "CreatedBy": "S0019796350",
+    "CreatedAt": "03/24/2020 10:35:28",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "CreateTableIflow",
+        "Name": "CreateTableIflow",
+        "Version": "1.0.3",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:01:36",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Framework_targetDB",
+        "Name": "Framework_targetDB",
+        "Version": "1.0.2",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:03:05",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Framework_sourceDB",
+        "Name": "Framework_sourceDB",
+        "Version": "1.0.2",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:02:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Select_Specific_msgguid",
+        "Name": "Select_Specific_msgguid",
+        "Version": "1.0.2",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:03:32",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SelectTableIflow",
+        "Name": "SelectTableIflow",
+        "Version": "1.0.2",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:04:28",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Framework_GV",
+        "Name": "Framework_GV",
+        "Version": "Draft",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "04/02/2020 09:46:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Select_Specific_msgguid_Target",
+        "Name": "Select_Specific_msgguid_Target",
+        "Version": "1.0.4",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "03/24/2020 10:35:28",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "03/24/2020 11:04:02",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "Operation_iflows",
+    "TechnicalName": "Operationiflows",
+    "CreatedBy": "S0020816903",
+    "CreatedAt": "03/20/2020 17:18:41",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "Monitor_Failed_events",
+        "Name": "Monitor_Failed_events",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Delete_Processing_Message",
+        "Name": "Monitor_Delete_Processing_Message",
+        "Version": "1.0.2",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_JMS_Queues",
+        "Name": "Monitor_JMS_Queues",
+        "Version": "1.0.15",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/23/2020 20:44:56",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_ASE_DB_Remove_Old_Records_FullClear",
+        "Name": "Monitor_ASE_DB_Remove_Old_Records_FullClear",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Tenant_Ping",
+        "Name": "Monitor_Tenant_Ping",
+        "Version": "1.0.11",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Processing_events",
+        "Name": "Monitor_Processing_events",
+        "Version": "1.0.22",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "04/01/2020 11:11:37",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_SendExceptions",
+        "Name": "Monitor_SendExceptions",
+        "Version": "1.0.6",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_ASE_DB_Remove_Old_Records",
+        "Name": "Monitor_ASE_DB_Remove_Old_Records",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Certificates",
+        "Name": "Monitor_Certificates",
+        "Version": "1.0.15",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitoring_Queues_ValueMapping",
+        "Name": "Monitoring_Queues_ValueMapping",
+        "Version": "1.0.5",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/25/2020 12:32:35",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "Monitor_SendAlerts_Centreon",
+        "Name": "Monitor_SendAlerts_Centreon",
+        "Version": "1.0.4",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "04/04/2020 10:46:28",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Retry_events",
+        "Name": "Monitor_Retry_events",
+        "Version": "1.0.15",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_DB_Resources",
+        "Name": "Monitor_DB_Resources",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/25/2020 14:34:48",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_JMS_Broker",
+        "Name": "Monitor_JMS_Broker",
+        "Version": "1.0.14",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Escalated_events",
+        "Name": "Monitor_Escalated_events",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Monitor_Tenant_Resources",
+        "Name": "Monitor_Tenant_Resources",
+        "Version": "1.0.18",
+        "CreatedBy": "S0020816903",
+        "CreatedAt": "03/20/2020 17:18:41",
+        "ModifiedBy": "S0020816903",
+        "ModifiedAt": "03/20/2020 17:18:41",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S",
+    "TechnicalName": "C4CERPTEST",
+    "CreatedBy": "S0020938306",
+    "CreatedAt": "04/01/2020 13:01:15",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPC4S_RCV_ORGCHANGES01",
+        "Name": "SAPC4S_RCV_ORGCHANGES01",
+        "Version": "1.0.5",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:01:15",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:11:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_ORGCHANGES01",
+        "Name": "AZSB_SND_ORGCHANGES01",
+        "Version": "1.0.3",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:01:15",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:01:15",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S Article",
+    "TechnicalName": "SAPC4SArticles",
+    "CreatedBy": "S0020363350",
+    "CreatedAt": "04/01/2020 08:23:04",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPC4S_RCV_ARTICLE01",
+        "Name": "SAPC4S_RCV_ARTICLE01",
+        "Version": "1.0.55",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/03/2020 09:33:38",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_ARTICLE01",
+        "Name": "AZSB_SND_ARTICLE01",
+        "Version": "1.0.38",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/01/2020 08:23:04",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_ARTICLE_AFTERSALES01",
+        "Name": "AZSB_SND_ARTICLE_AFTERSALES01",
+        "Version": "1.0.39",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/01/2020 08:23:04",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPC4S_RCV_ARTICLE_OPERATINGCHAIN01",
+        "Name": "SAPC4S_RCV_ARTICLE_OPERATINGCHAIN01",
+        "Version": "1.0.48",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/03/2020 10:47:17",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_ARTICLE_OPERATINGCHAIN01",
+        "Name": "AZSB_SND_ARTICLE_OPERATINGCHAIN01",
+        "Version": "1.0.31",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/01/2020 08:23:04",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPC4S_RCV_ARTICLE_AFTERSALES01",
+        "Name": "SAPC4S_RCV_ARTICLE_AFTERSALES01",
+        "Version": "1.0.57",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "04/01/2020 08:23:04",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "04/03/2020 09:44:20",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S Article Hierarchy",
+    "TechnicalName": "SAPC4SArticleRelationship",
+    "CreatedBy": "S0020363350",
+    "CreatedAt": "03/26/2020 08:42:29",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPC4S_RCV_ARTICLE_HIERARCHY02",
+        "Name": "SAPC4S_RCV_ARTREL01",
+        "Version": "1.0.42",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "03/26/2020 08:42:29",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "03/31/2020 18:20:52",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_ARTICLE_HIERARCHY02",
+        "Name": "AZSB_SND_ARTICLE_HIERARCHY02_IDL",
+        "Version": "1.0.34",
+        "CreatedBy": "S0020363350",
+        "CreatedAt": "03/26/2020 08:42:29",
+        "ModifiedBy": "S0020363350",
+        "ModifiedAt": "03/26/2020 09:46:00",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S Identity",
+    "TechnicalName": "SAPC4SIdentity",
+    "CreatedBy": "S0020378357",
+    "CreatedAt": "03/25/2020 21:32:22",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "AZSB_SND_IDENTITY01",
+        "Name": "AZSB_SND_IDENTITY01",
+        "Version": "1.0.24",
+        "CreatedBy": "S0020378357",
+        "CreatedAt": "04/08/2020 13:33:20",
+        "ModifiedBy": "S0020378357",
+        "ModifiedAt": "04/08/2020 13:33:20",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "AZSB_SND_DELETEME01",
+        "Name": "AZSB_SND_DELETEME01",
+        "Version": "1.0.9",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "04/02/2020 11:48:40",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "04/02/2020 11:48:40",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPC4S_RCV_CustomerDeleteMe",
+        "Name": "SAPC4S_RCV_CustomerDeleteMe",
+        "Version": "1.0.81",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "04/02/2020 11:57:02",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "04/02/2020 11:57:02",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Temp_Deleteme_testHTTP",
+        "Name": "Temp_Deleteme_testHTTP",
+        "Version": "1.0.1",
+        "CreatedBy": "S0019796350",
+        "CreatedAt": "04/02/2020 14:33:45",
+        "ModifiedBy": "S0019796350",
+        "ModifiedAt": "04/02/2020 14:34:38",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPC4S_RCV_IDENTITY01",
+        "Name": "SAPC4S_RCV_IDENTITY01",
+        "Version": "1.0.79",
+        "CreatedBy": "S0020378357",
+        "CreatedAt": "04/08/2020 11:55:00",
+        "ModifiedBy": "S0020378357",
+        "ModifiedAt": "04/08/2020 14:48:34",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S Service Ticket",
+    "TechnicalName": "SAPC4SServiceTicket",
+    "CreatedBy": "S0020403932",
+    "CreatedAt": "03/29/2020 19:52:42",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPC4S_SND_SERVICETICKET01",
+        "Name": "SAPC4S_SND_SERVICETICKET01",
+        "Version": "1.0.2",
+        "CreatedBy": "S0020403932",
+        "CreatedAt": "03/29/2020 19:55:10",
+        "ModifiedBy": "S0020403932",
+        "ModifiedAt": "03/29/2020 19:55:10",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP C4S work ticket",
+    "TechnicalName": "SAPC4Sworkticket",
+    "CreatedBy": "S0020043302",
+    "CreatedAt": "04/01/2020 07:42:17",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPC4S_RCV_WorkTicket",
+        "Name": "SAPC4S_RCV_WorkTicket",
+        "Version": "1.0.29",
+        "CreatedBy": "S0020043302",
+        "CreatedAt": "04/01/2020 07:53:51",
+        "ModifiedBy": "S0020043302",
+        "ModifiedAt": "04/01/2020 07:53:51",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_WORKTICKET01",
+        "Name": "SAPERP_SND_SAPC4S_WORKTICKET01",
+        "Version": "1.0.42",
+        "CreatedBy": "S0020043302",
+        "CreatedAt": "04/01/2020 07:42:17",
+        "ModifiedBy": "S0020043302",
+        "ModifiedAt": "04/01/2020 07:53:51",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP CAR General",
+    "TechnicalName": "SAPCARGeneral",
+    "CreatedBy": "S0020043302",
+    "CreatedAt": "03/25/2020 08:56:29",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "BLUEBERRY_SND_AZURE_RECEIPT",
+        "Name": "BLUEBERRY_SND_AZURE_RECEIPT",
+        "Version": "1.0.12",
+        "CreatedBy": "S0020043302",
+        "CreatedAt": "03/25/2020 08:58:15",
+        "ModifiedBy": "S0020043302",
+        "ModifiedAt": "03/25/2020 08:58:15",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "BLUEBERRY_SND_SAPCAR_POSLOG01",
+        "Name": "BLUEBERRY_SND_SAPCAR_POSLOG01",
+        "Version": "1.0.12",
+        "CreatedBy": "S0020043302",
+        "CreatedAt": "03/25/2020 08:58:01",
+        "ModifiedBy": "S0020043302",
+        "ModifiedAt": "03/25/2020 08:58:01",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP Commerce Cloud Integration with SAP ERP for Elkjop B2B",
+    "TechnicalName": "SAPCommerceCloudIntegrationwithSAPERPforElkjopB2B",
+    "CreatedBy": "S0020999295",
+    "CreatedAt": "03/23/2020 10:32:03",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "Replicate Cart and Checkout Order Notifications From ERP To SAP Commerce Cloud",
+        "Name": "Replicate_OMM_Order_Notifications_From_ERP_To_SAP_Commerce_Cloud_NGR043",
+        "Version": "1.0.7",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/03/2020 01:33:54",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Replicate Invoice From ERP To SAP Commerce Cloud",
+        "Name": "Replicate_Invoice_From_ERP_To_SAP_Commerce_Cloud-NGR007",
+        "Version": "1.0.6",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/05/2020 14:37:29",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_SND_SAPCOMMERCE_PRODUCT_DELIVERYTIME01",
+        "Name": "SAPERP_SND_SAPCOMMERCE_PRODUCT_DELIVERYTIME01",
+        "Version": "1.2",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/03/2020 10:52:54",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Route Idocs From ERP To SAP Commerce Cloud",
+        "Name": "Route_Idocs_From_ERP_To_SAP_Commerce_Cloud_B2B",
+        "Version": "1.3.11",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/03/2020 02:58:25",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Access DataStore for ERP",
+        "Name": "Access_DataStore_for_ERP_B2B",
+        "Version": "1.0.7",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/23/2020 10:32:03",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "Replicate B2B Customer From ERP To SAP Commerce Cloud",
+        "Name": "Replicate_B2B_Customer_From_ERP_To_SAP_Commerce_Cloud_-_NGR235",
+        "Version": "1.0.34",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/23/2020 10:32:03",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/02/2020 17:22:24",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP B2BCustomerUpdateAPIs",
+    "TechnicalName": "B2BCustomerUpdateAPIs",
+    "CreatedBy": "S0020999295",
+    "CreatedAt": "03/25/2020 12:58:21",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_UPDATECUSTOMER",
+        "Name": "SAPAPIM_SND_UPDATECUSTOMER",
+        "Version": "1.0.4",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:21",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:21",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_ACTIVATEPARTNER",
+        "Name": "SAPAPIM_SND_SAPERP_ACTIVATEPARTNER",
+        "Version": "1.0.18",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:21",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:21",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_MAINTAINPARTNER",
+        "Name": "MaintainPartner",
+        "Version": "1.0.21",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:21",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:21",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_CREATEPARTNER",
+        "Name": "CreatePartner",
+        "Version": "1.0.21",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:21",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:21",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_UPDATEPARTNER",
+        "Name": "UpdatePartner",
+        "Version": "1.0.18",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:21",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:21",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP C4S Business Partner Replication",
+    "TechnicalName": "SAPERPC4SBusinessPartnerReplication",
+    "CreatedBy": "S0020378357",
+    "CreatedAt": "03/25/2020 21:36:50",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_BUSINESSPARTNERCONTACTADDRESS01",
+        "Name": "SAPERP_SND_SAPC4S_BUSINESSPARTNERCONTACTADDRESS01",
+        "Version": "2.0.13",
+        "CreatedBy": "S0020378357",
+        "CreatedAt": "03/27/2020 17:16:07",
+        "ModifiedBy": "S0020378357",
+        "ModifiedAt": "04/08/2020 18:16:49",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_BUSINESSPARTNERADDRESS01",
+        "Name": "SAPERP_SND_SAPC4S_BUSINESSPARTNERADDRESS01",
+        "Version": "2.0.22",
+        "CreatedBy": "S0020378357",
+        "CreatedAt": "03/27/2020 17:15:47",
+        "ModifiedBy": "S0020378357",
+        "ModifiedAt": "04/08/2020 18:22:58",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_BUSINESSPARTNER01",
+        "Name": "SAPERP_SND_SAPC4S_BUSINESSPARTNER01",
+        "Version": "2.0.52",
+        "CreatedBy": "S0020378357",
+        "CreatedAt": "03/27/2020 17:15:33",
+        "ModifiedBy": "S0020378357",
+        "ModifiedAt": "04/08/2020 18:22:25",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP CustomerServiceAPIs",
+    "TechnicalName": "CustomerServiceAPIs",
+    "CreatedBy": "S0020999295",
+    "CreatedAt": "03/25/2020 12:58:34",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_GETBUSINESSPARTNERBYCONTACT",
+        "Name": "SAPAPIM_SND_GETBUSINESSPARTNERBYCONTACT",
+        "Version": "1.0.13",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:34",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:34",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_PARTNERSEARCH",
+        "Name": "SAPAPIM_SND_PARTNERSEARCH",
+        "Version": "1.0.19",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:34",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/01/2020 18:03:11",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_GETPARTNERFUNCTIONS",
+        "Name": "SAPAPIM_SND_GETPARTNERFUNCTIONS",
+        "Version": "1.0.17",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:34",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:34",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPAPIM_SND_SAPERP_PROCESSBLUEBERRY",
+        "Name": "SAPAPIM_SND_PROCESSBLUEBERRY",
+        "Version": "1.0.16",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/25/2020 12:58:34",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/25/2020 12:58:34",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP Payment Confirmation",
+    "TechnicalName": "SAPERPC4SPaymentConfirmation",
+    "CreatedBy": "S0020403932",
+    "CreatedAt": "03/27/2020 09:43:02",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_PAYMENTCONFIRMATION01",
+        "Name": "SAPERP_SND_SAPC4S_PAYMENTCONFIRMATION01",
+        "Version": "1.0.1",
+        "CreatedBy": "S0020403932",
+        "CreatedAt": "03/27/2020 09:43:02",
+        "ModifiedBy": "S0020403932",
+        "ModifiedAt": "03/27/2020 09:52:15",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP Sales Order",
+    "TechnicalName": "ERPSalesOrderNGR",
+    "CreatedBy": "S0020999295",
+    "CreatedAt": "03/24/2020 15:26:12",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPERP_SND_SAPMKT_ORDERS01",
+        "Name": "SAPERP_SND_SAPMKT_ORDERS01",
+        "Version": "1.0.0",
+        "CreatedBy": "S0020043302",
+        "CreatedAt": "04/01/2020 07:55:24",
+        "ModifiedBy": "S0020043302",
+        "ModifiedAt": "04/01/2020 07:55:24",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPCOMMERCE_SND_SALESORDER01",
+        "Name": "SAPCOMMERCE_SND_SALESORDER01",
+        "Version": "1.10",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "04/02/2020 16:44:24",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPCAR_RCV_SALESORDER01_RESERVATION",
+        "Name": "SAPCAR_RCV_SALESORDER01_RESERVATION",
+        "Version": "1.1",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "INTERSHOP7_SND_SALESORDER01",
+        "Name": "INTERSHOP7_SND_SALESORDER01",
+        "Version": "1.3",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 16:17:43",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "BLUEBERRY_SND_SALESORDER01",
+        "Name": "BLUEBERRY_SND_SALESORDER01",
+        "Version": "1.1",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_RCV_SALESORDER01_RETRY",
+        "Name": "SAPERP_RCV_SALESORDER01_RETRY",
+        "Version": "1.0",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "FREMTIND_SND_SAPERP_SALESORDER01",
+        "Name": "FREMTIND_SND_SAPERP_SALESORDER01",
+        "Version": "1.0",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "BRING_RCV_SALESORDER01_POSTALID",
+        "Name": "BRING_RCV_SALESORDER01_POSTALID",
+        "Version": "1.1",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      },
+      {
+        "DisplayName": "SAPERP_RCV_SALESORDER01",
+        "Name": "SAPERP_RCV_SALESORDER01",
+        "Version": "1.3",
+        "CreatedBy": "S0020999295",
+        "CreatedAt": "03/24/2020 15:26:12",
+        "ModifiedBy": "S0020999295",
+        "ModifiedAt": "03/24/2020 15:26:12",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "SAP ERP Vendor",
+    "TechnicalName": "SAPERPVendor",
+    "CreatedBy": "S0020403932",
+    "CreatedAt": "03/29/2020 19:28:58",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "SAPERP_SND_SAPC4S_VENDORMASTER01",
+        "Name": "SAPERP_SND_SAPC4S_VENDORMASTER01",
+        "Version": "Draft",
+        "CreatedBy": "S0020403932",
+        "CreatedAt": "03/29/2020 19:30:14",
+        "ModifiedBy": "S0020403932",
+        "ModifiedAt": "03/31/2020 13:38:46",
+        "Type": "IFlow"
+      }
+    ]
+  },
+  {
+    "DisplayName": "Value Mappings",
+    "TechnicalName": "ValueMappings",
+    "CreatedBy": "S0020938306",
+    "CreatedAt": "04/01/2020 13:03:16",
+    "scpiIFLOW": [
+      {
+        "DisplayName": "MarketingAreas",
+        "Name": "MarketingAreas",
+        "Version": "1.0.1",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "AZESB_AbandonedBasket_MKT",
+        "Name": "AZESB_AbandonedBasket_MKT",
+        "Version": "1.0.0",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "C4S_ERP_ValueMapping",
+        "Name": "C4S_ERP_ValueMapping",
+        "Version": "1.0.5",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "MKT_CommunicationMedium",
+        "Name": "MKT_CommunicationMedium",
+        "Version": "1.0.1",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "Transport_Values",
+        "Name": "Transport_Values",
+        "Version": "1.0.1",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "OPChain_COuntry Codes",
+        "Name": "OPChain_Country_codes",
+        "Version": "1.0.0",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      },
+      {
+        "DisplayName": "StoreTypes_Mkt_location_Types",
+        "Name": "StoreTypes_Mkt_location_Types",
+        "Version": "1.0.0",
+        "CreatedBy": "S0020938306",
+        "CreatedAt": "04/01/2020 13:03:16",
+        "ModifiedBy": "S0020938306",
+        "ModifiedAt": "04/01/2020 13:03:16",
+        "Type": "ValueMapping"
+      }
+    ]
+  }
+]
