@@ -38,6 +38,7 @@ public class scpiExtractor {
 	public static void main(String[] args) {
 
 		long startTime = System.nanoTime();
+		
 
 		DefaultParser defaultParser = new DefaultParser();
 
@@ -108,7 +109,7 @@ public class scpiExtractor {
 			long totalTime = endTime - startTime;
 			StringBuilder executionInfo = new StringBuilder();
 			executionInfo.append("INFO  : Extraction Time ");
-			executionInfo.append(new Date(totalTime / 1000).getSeconds());
+			executionInfo.append(totalTime / 1000000000);
 			executionInfo.append(" Seconds");
 			System.out.println(executionInfo.toString());
 
@@ -272,7 +273,6 @@ public class scpiExtractor {
 
 	public static scpiRuntimeIflow[] getRuntimeData() throws Exception {
 
-		System.out.println("START : Extraction");
 		System.out.println("EVENT : Connecting to Host " + ctx.getSCPIHost() + " with user " + ctx.getUser());
 
 		String apiUri = "";
@@ -297,7 +297,7 @@ public class scpiExtractor {
 		// 2--> Loop at number of Proxy
 		for (JsonElement iflowIDJE : iflowIDArr) {
 			
-			System.out.format("Event : Fetching Iflow %d from Runtime%n",i);
+			System.out.format("EVENT : Fetching Iflow %d from Runtime%n",i+1);
 
 			iflow[i] = new scpiRuntimeIflow();
 
@@ -352,8 +352,13 @@ public class scpiExtractor {
 			String endpoint = "";
 			if (je.getAsJsonObject().get("endpoints") != null) {
 				JsonArray endpoints = je.getAsJsonObject().get("endpoints").getAsJsonArray();
+				int counter=0;
 				for (JsonElement endpJE : endpoints) {
-					endpoint += endpJE.getAsString() + "\n";
+					endpoint += endpJE.getAsString();
+					counter++;
+					if(counter != endpoints.size())
+						endpoint +=  "\n";
+					
 				}
 
 			}
@@ -365,12 +370,16 @@ public class scpiExtractor {
 				JsonArray compInfo = je.getAsJsonObject().get("componentInformations").getAsJsonArray();
 				JsonElement adapterPollInfos = compInfo.get(0).getAsJsonObject().get("adapterPollInfos");
 				if (adapterPollInfos != null) {
+					int counter=0;
 					JsonArray pollingEndpoints = adapterPollInfos.getAsJsonArray();
 					for (JsonElement pollingEndJE : pollingEndpoints) {
 						String temp = pollingEndJE.getAsJsonObject().get("endpointUri").getAsString();
 						if (temp.startsWith("sftp"))
 							temp = temp.substring(0, temp.indexOf("?") - 1);
-						pollEP += temp + "\n";
+						pollEP += temp;
+						counter++;
+						if(counter != pollingEndpoints.size())
+							pollEP += "\n";
 					}
 
 				}
