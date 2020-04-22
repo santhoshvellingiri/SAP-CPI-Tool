@@ -322,7 +322,8 @@ public class scpiExtractor {
 
 		System.out.println("EVENT : Found " + iflowIDArr.size() + " IFlows");
 		System.out.println("START : Fetching Runtime Information ");
-		scpiRuntimeIflow[] iflow = new scpiRuntimeIflow[iflowIDArr.size()];
+		int totalIflow = iflowIDArr.size();
+		scpiRuntimeIflow[] iflow = new scpiRuntimeIflow[totalIflow];
 
 		// 2--> Loop at each IFlow
 		for (JsonElement iflowIDJE : iflowIDArr) {
@@ -336,7 +337,7 @@ public class scpiExtractor {
 			String ID = iflowIDJOB.get("id").getAsString();
 			String iflowName = iflowIDJOB.get("name").getAsString();
 			
-			System.out.format("EVENT %d : Fetching Iflow %s from Runtime%n", i + 1, iflowName);
+			System.out.format("IFLOW  %d/%d : Fetching %s from Runtime%n", i + 1, totalIflow, iflowName);
 
 			// 4 --> Read tags and find package name
 			JsonArray tagArr = iflowIDJOB.get("tags").getAsJsonArray();
@@ -439,8 +440,10 @@ public class scpiExtractor {
 				.getAsJsonArray();
 
 		int i = 0;
+		
+		int totalIflow = iflowIDArr.size();
 
-		System.out.println("EVENT : Found " + iflowIDArr.size() + " IFlows");
+		System.out.println("EVENT : Found " + totalIflow + " IFlows");
 		System.out.println("START : Fetching Runtime Information ");
 
 		ArrayList<TreeMap<String, String>> al = new ArrayList<TreeMap<String, String>>();
@@ -466,7 +469,7 @@ public class scpiExtractor {
 //			if(!iflowName.equals("Notify Service Ticket of Follow Up Document from SAP Business Suite_"))
 //				continue;
 
-			System.out.format("EVENT %d : Extracting Config of IFlow %s%n", i + 1, iflowName);
+			System.out.format("IFLOW %d/%d : Extracting Config of IFlow %s%n", i + 1, totalIflow, iflowName);
 //			System.out.println("EVENT : Extraction Config of IFlow " + iflowName);
 
 			// 4 Get IFLow ZIP
