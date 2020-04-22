@@ -68,6 +68,7 @@ public class scpiExtractor {
 		option.addOption("password", true, "Password");
 		option.addOption("filename", true, "Output File Name");
 		option.addOption("mode", true, "Extraction Mode");
+		option.addOption("resolveExtVar", true, "Resolve Extraction Variables Y/N");
 
 		try {
 
@@ -78,6 +79,7 @@ public class scpiExtractor {
 			String pass = comlin.getOptionValue("password");
 			String fileName = comlin.getOptionValue("filename");
 			String mode = comlin.getOptionValue("mode");
+			String exVar = comlin.getOptionValue("resolveExtVar");
 
 			if (pass == null) {
 				java.io.Console console = System.console();
@@ -103,6 +105,9 @@ public class scpiExtractor {
 			if (isNullOrEmptyCheck(mode)) {
 				throw new MissingArgumentException("Provide mode arguments to execute the operation");
 			}
+			if (isNullOrEmptyCheck(exVar)) {
+				exVar = "N";
+			}
 
 			ctx = new scpiConfig();
 			ctx.setSCPIHost(host);
@@ -123,7 +128,7 @@ public class scpiExtractor {
 				System.out.println("END   : Extraction");
 			} else if (mode.equalsIgnoreCase("configuration")) {
 				System.out.println("START : Extraction");
-				ArrayList<TreeMap<String, String>> cnfData = getConfigData();
+				ArrayList<TreeMap<String, String>> cnfData = getConfigData(exVar);
 				writeFile(fileName, cnfData);
 				System.out.println("END   : Extraction");
 			} else {
@@ -137,6 +142,8 @@ public class scpiExtractor {
 			executionInfo.append(totalTime / 1000000000);
 			executionInfo.append(" Seconds");
 			System.out.println(executionInfo.toString());
+			System.out.println("Author : Santhosh Vellingiri");
+			System.out.println("Follow : https://www.linkedin.com/in/santhoshkumarvellingiri/");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -224,7 +231,7 @@ public class scpiExtractor {
 
 		// 6--> Loop at number of Proxy
 		for (JsonElement packageJE : packArr) {
-			
+
 			// 7--> Get the single API Proxy result
 			JsonObject packageJOB = packageJE.getAsJsonObject();
 
@@ -237,7 +244,7 @@ public class scpiExtractor {
 			pkge[i].setCreatedBy(packageJOB.get("CreatedBy").getAsString());
 			pkge[i].setCreatedAt(packageJOB.get("CreatedAt").getAsString());
 
-			//9 --> Get IFlow based on Package Name 
+			// 9 --> Get IFlow based on Package Name
 			pkge[i].setscpiIFLOW(getIflow(packageJOB.get("TechnicalName").getAsString()));
 			i++;
 		}
@@ -328,7 +335,6 @@ public class scpiExtractor {
 			JsonObject iflowIDJOB = iflowIDJE.getAsJsonObject();
 			String ID = iflowIDJOB.get("id").getAsString();
 
-			
 			// 4 --> Read tags and find package name
 			JsonArray tagArr = iflowIDJOB.get("tags").getAsJsonArray();
 			for (int j = tagArr.size() - 1; j >= 0; j--) {
@@ -413,14 +419,13 @@ public class scpiExtractor {
 		return iflow;
 	}
 
-	public static ArrayList<TreeMap<String, String>> getConfigData() throws Exception {
+	public static ArrayList<TreeMap<String, String>> getConfigData(String exVar) throws Exception {
 
 		System.out.println("EVENT : Connecting to Host " + ctx.getSCPIHost() + " with user " + ctx.getUser());
 
 		String apiUri = "";
 		String completeURL = "";
-		// 1-->Get API Proxy Count in the tenant
-		// apiUri="/api/v1/IntegrationPackages/";
+		// 1-->Get deployed IFLow
 		apiUri = "/itspaces/Operations/com.sap.it.op.tmn.commands.dashboard.webui.IntegrationComponentsListCommand";
 		completeURL = "https://" + ctx.getSCPIHost() + apiUri;
 
@@ -434,51 +439,52 @@ public class scpiExtractor {
 
 		System.out.println("EVENT : Found " + iflowIDArr.size() + " IFlows");
 		System.out.println("START : Fetching Runtime Information ");
-		// scpiRuntimeIflow[] iflow = new scpiRuntimeIflow[iflowIDArr.size()];
 
 		ArrayList<TreeMap<String, String>> al = new ArrayList<TreeMap<String, String>>();
 		TreeMap<String, String> colmName = new TreeMap<String, String>();
 		colmName.put("IFlow", "Example");
 		al.add(colmName);
 
-		// 2--> Loop at number of Proxy
+		// 2--> Loop Each Iflow
 		for (JsonElement iflowIDJE : iflowIDArr) {
 
-//			System.out.format("EVENT : Fetching Iflow %d from Runtime%n", i + 1);
-			// 7--> Get the single API Proxy result
+//	
+			// 3--> Get IFLow Name and ID
 			JsonObject iflowIDJOB = iflowIDJE.getAsJsonObject();
 
 			String symbolicName = iflowIDJOB.get("symbolicName").getAsString();
-			String version = iflowIDJOB.get("version").getAsString();
+			// String version = iflowIDJOB.get("version").getAsString();
 			String iflowName = iflowIDJOB.get("name").getAsString();
 			String type = iflowIDJOB.get("type").getAsString();
 
 			if (type.equals("VALUE_MAPPING"))
 				continue;
-			
+
 //			if(!iflowName.equals("Notify Service Ticket of Follow Up Document from SAP Business Suite_"))
 //				continue;
 
-			System.out.println("EVENT : Extraction IFlow : " + iflowName);
+			System.out.println("EVENT : Extraction Config of IFlow " + iflowName);
 
-			apiUri = String.format("/api/v1/IntegrationDesigntimeArtifacts(Id='%s',Version='active')/$value", symbolicName);
+			// 4 Get IFLow ZIP
+			apiUri = String.format("/api/v1/IntegrationDesigntimeArtifacts(Id='%s',Version='active')/$value",
+					symbolicName);
 			completeURL = "https://" + ctx.getSCPIHost() + apiUri;
 
 			HttpResponse iflowZip = doGet(completeURL);
-//			System.out.println(iflowZip.getEntity().getContentType());
+
 //			byte [] byteArray = EntityUtils.toByteArray(iflowZip.getEntity());
 //			FileOutputStream outputStream = new FileOutputStream("temp.zip");
 //			outputStream.write(byteArray);
 //			outputStream.close();
 
+			// 5 Unzip and read only property and model file
 			ZipInputStream zipIn = new ZipInputStream(iflowZip.getEntity().getContent());
 			InputStream propertyFile = null;
 			InputStream iflowData = null;
 			ZipEntry entry = zipIn.getNextEntry();
 			while (entry != null) {
 				String entryName = entry.getName();
-//				System.out.println(entryName);
-				if (entryName.endsWith(".prop")) {
+				if (entryName.endsWith(".prop") && exVar.equalsIgnoreCase("y")) {
 					propertyFile = convertZipInputStreamToInputStream(zipIn);
 //					System.out.println(convertInputStreamToString(propertyFile));					
 				} else if (entryName.endsWith(".iflw")) {
@@ -488,12 +494,14 @@ public class scpiExtractor {
 				zipIn.closeEntry();
 				entry = zipIn.getNextEntry();
 			}
-			
+
+			// 6 Load properties
 			Properties prop = new Properties();
-			prop.load(propertyFile);
+			if (exVar.equalsIgnoreCase("y")) {				
+				prop.load(propertyFile);
+			}
 
-			//TreeMap<String, String> prop = getProperties(propertyFile);
-
+			// 7 Parse model xml
 			Document document = processxml(iflowData);
 			document.getDocumentElement().normalize();
 			Element root = document.getDocumentElement();
@@ -529,31 +537,33 @@ public class scpiExtractor {
 
 							if (!colmName.containsKey(key))
 								colmName.put(key, "example");
-//							final String regex = "\\{\\{[a-zA-Z]*\\}\\}/gm";
-//							final String regex = "\\{\\{[\\w +-]*\\}\\}";
-							final String regex = "\\{\\{[\\w -<>\\+]*\\}\\}";
 
-							if (value.contains("{{")) {
+							if (exVar.equalsIgnoreCase("y")) {
 
-								final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-								final Matcher matcher = pattern.matcher(value);
+								final String regex = "\\{\\{[\\w -<>\\+]*\\}\\}";
 
-								while (matcher.find()) {
+								if (value.contains("{{")) {
 
-									String string1 = matcher.group(0);
-//									System.out.println("Full match: " + string1);
-									
-									String onlyProp = string1.replace("{{", "").replace("}}","");
+									final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+									final Matcher matcher = pattern.matcher(value);
 
-									String propvalue = prop.get(onlyProp).toString();
-									
-									if(propvalue != null && !propvalue.isEmpty())
-									{
-										propvalue = "[" + propvalue + "]";
-										value = value.replace(string1, propvalue);
-									} 
+									while (matcher.find()) {
+
+										String string1 = matcher.group(0);
+//										System.out.println("Full match: " + string1);
+
+										String onlyProp = string1.replace("{{", "").replace("}}", "");
+
+										String propvalue = prop.get(onlyProp).toString();
+
+										if (propvalue != null && !propvalue.isEmpty()) {
+											propvalue = "[" + propvalue + "]";
+											value = value.replace(string1, propvalue);
+										}
+									}
 								}
 							}
+
 							map.put(key, value);
 						}
 					}
@@ -575,17 +585,12 @@ public class scpiExtractor {
 		byte data[] = new byte[BUFFER];
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-//		FileOutputStream outputStream = new FileOutputStream("temp.xml");
-//		BufferedOutputStream bos = new BufferedOutputStream(outputStream);
 
 		while ((count = in.read(data, 0, BUFFER)) != -1) {
 			out.write(data, 0, count);
-//	    	bos.write(data, 0, count);
-//	        outputStream.write(data);
 		}
 		InputStream is = new ByteArrayInputStream(out.toByteArray());
 		out.close();
-//	    outputStream.close();
 		return is;
 	}
 
@@ -594,44 +599,7 @@ public class scpiExtractor {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder = factory.newDocumentBuilder();
-
 		Document document = builder.parse(inpStream);
-
 		return document;
-	}
-
-	private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-
-		ByteArrayOutputStream result = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		int length;
-		while ((length = inputStream.read(buffer)) != -1) {
-			result.write(buffer, 0, length);
-		}
-
-		return result.toString(StandardCharsets.UTF_8.name());
-
-	}
-
-	public static TreeMap<String, String> getProperties(InputStream inputStream) throws IOException {
-		final int lhs = 0;
-		final int rhs = 1;
-
-		TreeMap<String, String> map = new TreeMap<String, String>();
-		BufferedReader bfr = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-
-		String line;
-		
-		while ((line = bfr.readLine()) != null) {
-			if (!line.startsWith("#") && !line.isEmpty() && line.contains("=")) {
-				String[] pair = line.trim().split("=");
-				if (pair.length >= 2)
-					map.put(pair[lhs].trim().replace("\\",""), pair[rhs].trim());
-			}
-		}
-
-		bfr.close();
-
-		return (map);
 	}
 }
