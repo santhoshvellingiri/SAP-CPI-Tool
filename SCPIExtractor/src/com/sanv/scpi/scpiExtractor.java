@@ -327,13 +327,16 @@ public class scpiExtractor {
 		// 2--> Loop at each IFlow
 		for (JsonElement iflowIDJE : iflowIDArr) {
 
-			System.out.format("EVENT : Fetching Iflow %d from Runtime%n", i + 1);
+			
 
 			iflow[i] = new scpiRuntimeIflow();
 
 			// 3--> Get IFlow ID
 			JsonObject iflowIDJOB = iflowIDJE.getAsJsonObject();
 			String ID = iflowIDJOB.get("id").getAsString();
+			String iflowName = iflowIDJOB.get("name").getAsString();
+			
+			System.out.format("EVENT %d : Fetching Iflow %s from Runtime%n", i + 1, iflowName);
 
 			// 4 --> Read tags and find package name
 			JsonArray tagArr = iflowIDJOB.get("tags").getAsJsonArray();
@@ -463,7 +466,8 @@ public class scpiExtractor {
 //			if(!iflowName.equals("Notify Service Ticket of Follow Up Document from SAP Business Suite_"))
 //				continue;
 
-			System.out.println("EVENT : Extraction Config of IFlow " + iflowName);
+			System.out.format("EVENT %d : Extracting Config of IFlow %s%n", i + 1, iflowName);
+//			System.out.println("EVENT : Extraction Config of IFlow " + iflowName);
 
 			// 4 Get IFLow ZIP
 			apiUri = String.format("/api/v1/IntegrationDesigntimeArtifacts(Id='%s',Version='active')/$value",
