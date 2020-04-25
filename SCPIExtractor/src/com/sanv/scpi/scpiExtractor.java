@@ -466,7 +466,7 @@ public class scpiExtractor {
 			if (type.equals("VALUE_MAPPING"))
 				continue;
 
-//			if(!iflowName.equals("Notify Service Ticket of Follow Up Document from SAP Business Suite_"))
+//			if(!iflowName.equals("Request Document Flow from SAP Business Suite"))
 //				continue;
 
 			System.out.format("IFLOW %d/%d : Extracting Config of IFlow %s%n", i + 1, totalIflow, iflowName);
@@ -539,8 +539,17 @@ public class scpiExtractor {
 						if (property.getNodeType() == Node.ELEMENT_NODE) {
 
 							Element propertyElement = (Element) property;
-							String key = propertyElement.getElementsByTagName("key").item(0).getTextContent();
-							String value = propertyElement.getElementsByTagName("value").item(0).getTextContent();
+							
+							NodeList NLkey = propertyElement.getElementsByTagName("key");
+							NodeList NLvalue = propertyElement.getElementsByTagName("value");
+							
+							String key = "";
+							String value = "";
+							
+							if(NLkey.getLength()>0)
+								key = NLkey.item(0).getTextContent();
+							if(NLvalue.getLength()>0)
+								value = NLvalue.item(0).getTextContent();
 
 							if (!colmName.containsKey(key))
 								colmName.put(key, "example");
@@ -608,5 +617,18 @@ public class scpiExtractor {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.parse(inpStream);
 		return document;
+	}
+	
+	private static String convertInputStreamToString(InputStream inputStream) throws IOException {
+
+		ByteArrayOutputStream result = new ByteArrayOutputStream();
+		byte[] buffer = new byte[1024];
+		int length;
+		while ((length = inputStream.read(buffer)) != -1) {
+			result.write(buffer, 0, length);
+		}
+
+		return result.toString(StandardCharsets.UTF_8.name());
+
 	}
 }
