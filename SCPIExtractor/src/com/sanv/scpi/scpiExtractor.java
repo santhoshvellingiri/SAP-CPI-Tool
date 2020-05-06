@@ -483,6 +483,11 @@ public class scpiExtractor {
 				System.out.format("IFLOW %d/%d : Integration design time artifact not found%n",i + 1, totalIflow);
 				continue;
 			}
+			
+			if(iflowZip.getStatusLine().getStatusCode()==400) {
+				System.out.format("IFLOW %d/%d : Cannot download the artifact from a configure only package.%n",i + 1, totalIflow);
+				continue;
+			}
 
 //			byte [] byteArray = EntityUtils.toByteArray(iflowZip.getEntity());
 //			FileOutputStream outputStream = new FileOutputStream("temp.zip");
@@ -509,7 +514,7 @@ public class scpiExtractor {
 
 			// 6 Load properties
 			Properties prop = new Properties();
-			if (exVar.equalsIgnoreCase("y")) {				
+			if (exVar.equalsIgnoreCase("y") && propertyFile!=null) {				
 				prop.load(propertyFile);
 			}
 
