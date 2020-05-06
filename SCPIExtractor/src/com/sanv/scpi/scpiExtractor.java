@@ -181,7 +181,7 @@ public class scpiExtractor {
 			HttpUriRequest request = requestbuilder.build();
 			closeableHttpResponse = client.execute(request);
 
-			if (closeableHttpResponse.getStatusLine().getStatusCode() != 200) {
+			if (closeableHttpResponse.getStatusLine().getStatusCode() == 401) {
 				System.out.println("ERROR : Cannot Connect");
 				System.out.println("INFO  : Check Host / User Credential / User Authorization");
 				throw new Exception("UNABLE_TO_CONNECT");
@@ -466,7 +466,7 @@ public class scpiExtractor {
 			if (type.equals("VALUE_MAPPING"))
 				continue;
 
-//			if(!iflowName.equals("Request Document Flow from SAP Business Suite"))
+//			if(!iflowName.equals("IFlow Name"))
 //				continue;
 
 			System.out.format("IFLOW %d/%d : Extracting Config of IFlow %s%n", i + 1, totalIflow, iflowName);
@@ -478,6 +478,11 @@ public class scpiExtractor {
 			completeURL = "https://" + ctx.getSCPIHost() + apiUri;
 
 			HttpResponse iflowZip = doGet(completeURL);
+			
+			if(iflowZip.getStatusLine().getStatusCode()==404) {
+				System.out.format("IFLOW %d/%d : Integration design time artifact not found%n",i + 1, totalIflow);
+				continue;
+			}
 
 //			byte [] byteArray = EntityUtils.toByteArray(iflowZip.getEntity());
 //			FileOutputStream outputStream = new FileOutputStream("temp.zip");
