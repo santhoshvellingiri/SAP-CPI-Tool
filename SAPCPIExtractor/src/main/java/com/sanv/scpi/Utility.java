@@ -61,7 +61,7 @@ public class Utility {
 
 	public static void writeFile(String fileName, Object obj) throws Exception {
 
-		// create the gson object
+		// create the GSON Object
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileOutputStream outputStream = new FileOutputStream(fileName);
 		byte[] strToBytes = gson.toJson(obj).getBytes();
