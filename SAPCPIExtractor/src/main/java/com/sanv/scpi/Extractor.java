@@ -104,6 +104,12 @@ public class Extractor {
 			case "downloadDeployedIFlow":
 				Downloader.downloadDeployedIflows(src);
 				break;
+			case "getConnections":
+				Object iFlTarConfig = Config.getTargetConnection(src);
+				fileName = src.getId() + "_ConnectionDetails.json";
+				file = new File(folderName, fileName);
+				Utility.writeFile(file, iFlTarConfig);
+				break;
 			}
 
 			long endTime = System.nanoTime();
@@ -124,7 +130,7 @@ public class Extractor {
 
 	public static void verifyMode(String mode) throws Exception {
 		List<String> allowedMode = new ArrayList<String>();
-		allowedMode = Arrays.asList("designtime", "runtime", "configuration","downloadAllPackage","downloadPackage","downloadDeployedIFlow");
+		allowedMode = Arrays.asList("designtime", "runtime", "configuration","downloadAllPackage","downloadPackage","downloadDeployedIFlow","getConnections");
 		if (!allowedMode.contains(mode))
 			throw new Exception("Incorrect Mode");
 	}
