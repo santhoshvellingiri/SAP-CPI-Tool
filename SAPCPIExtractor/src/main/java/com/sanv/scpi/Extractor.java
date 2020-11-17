@@ -15,7 +15,9 @@ import com.google.gson.Gson;
 import com.sanv.scpi.enabler.Config;
 import com.sanv.scpi.enabler.Design;
 import com.sanv.scpi.enabler.Downloader;
+import com.sanv.scpi.enabler.ExternalConfiguration;
 import com.sanv.scpi.enabler.Runtime;
+import com.sanv.scpi.model.IflowExConfig;
 import com.sanv.scpi.model.scpiPackageWithIFlow;
 import com.sanv.scpi.model.scpiRuntimeIflow;
 import com.sanv.scpi.model.tenantConfiguration;
@@ -110,6 +112,12 @@ public class Extractor {
 				file = new File(folderName, fileName);
 				Utility.writeFile(file, iFlTarConfig);
 				break;
+			case "downloadExtConfiguration":
+				List<IflowExConfig> XConLs = ExternalConfiguration.downloadAllExConf(src);
+				fileName = src.getId() + "_XConfiguration.json";
+				file = new File(folderName, fileName);
+				Utility.writeFile(file, XConLs);
+				break;
 			}
 
 			long endTime = System.nanoTime();
@@ -130,7 +138,7 @@ public class Extractor {
 
 	public static void verifyMode(String mode) throws Exception {
 		List<String> allowedMode = new ArrayList<String>();
-		allowedMode = Arrays.asList("designtime", "runtime", "configuration","downloadAllPackage","downloadPackage","downloadDeployedIFlow","getConnections");
+		allowedMode = Arrays.asList("designtime", "runtime", "configuration","downloadAllPackage","downloadPackage","downloadDeployedIFlow","getConnections", "downloadExtConfiguration");
 		if (!allowedMode.contains(mode))
 			throw new Exception("Incorrect Mode");
 	}
