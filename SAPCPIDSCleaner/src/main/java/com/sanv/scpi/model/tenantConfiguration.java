@@ -1,8 +1,5 @@
 package com.sanv.scpi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class tenantConfiguration {
 
 	private String Id;
@@ -11,7 +8,6 @@ public class tenantConfiguration {
 	private String IFLHost;
 	private String User;
 	private String password;
-	private List <String> Connection = new ArrayList < String > ();
 
 	// Getter Methods
 
@@ -38,10 +34,6 @@ public class tenantConfiguration {
 	public String getPassword() {
 		return password;
 	}
-	
-	public List<String> getConnection() {
-		return Connection;
-	}
 
 	// Setter Methods
 
@@ -67,10 +59,6 @@ public class tenantConfiguration {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public void setConnection(List<String> Connection) {
-		this.Connection = Connection;
 	}
 
 }

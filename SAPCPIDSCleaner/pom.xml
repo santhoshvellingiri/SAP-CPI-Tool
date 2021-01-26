@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sanv.scp</groupId>
-	<artifactId>sapcpi-artifactextractor</artifactId>
-	<version>0.0.2</version>
-	<name>SAPCPIExtractor</name>
-	<description>SAP CPI Tool to Extract Artifact Information</description>	
+	<artifactId>sapcpi-datastorecleaner</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SAPCPIDSCleaner</name>
 	<build>
-		<finalName>scpiExtractor</finalName>
+		<finalName>scpiDSCleaner</finalName>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
 		<resources>
@@ -54,7 +52,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.sanv.scpi.Extractor</mainClass>
+							<mainClass>com.sanv.scpi.DSCleaner</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
 						<manifestEntries>
@@ -65,7 +63,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>commons-cli</groupId>
@@ -86,11 +83,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.12</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.7</version>
 		</dependency>
 	</dependencies>
 </project>

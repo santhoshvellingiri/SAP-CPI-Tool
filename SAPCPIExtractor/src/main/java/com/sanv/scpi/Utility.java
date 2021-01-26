@@ -2,12 +2,14 @@ package com.sanv.scpi;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -59,15 +61,60 @@ public class Utility {
 		return closeableHttpResponse;
 	}
 
-	public static void writeFile(String fileName, Object obj) throws Exception {
+	public static void writeFile(File file, Object obj) throws Exception {
 
 		// create the GSON Object
+		File parent = file.getParentFile();
+		if (parent != null)
+			parent.mkdirs();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		FileOutputStream outputStream = new FileOutputStream(fileName);
+		FileOutputStream outputStream = new FileOutputStream(file);
 		byte[] strToBytes = gson.toJson(obj).getBytes();
 		outputStream.write(strToBytes);
 		outputStream.close();
 
+	}
+
+	public static void writeFile(ZipInputStream zipIn, String folderName) throws Exception {
+		ZipEntry zipEntry = zipIn.getNextEntry();
+		while (zipEntry != null) {
+			String name = zipEntry.getName();
+			File file = new File(folderName, name);
+			if (name.endsWith("/")) {
+				file.mkdirs();
+				continue;
+			}
+			File parent = file.getParentFile();
+			if (parent != null)
+				parent.mkdirs();
+			InputStream is = convertZipInputStreamToInputStream(zipIn);
+			FileOutputStream fos = new FileOutputStream(file);
+			byte[] bytes = new byte[1024];
+			int length;
+			while ((length = is.read(bytes)) >= 0)
+				fos.write(bytes, 0, length);
+			is.close();
+			fos.close();
+			zipIn.closeEntry();
+			zipEntry = zipIn.getNextEntry();
+		}
+	}
+
+	public static void writePackageFile(String env, String packageName, String packageID, HttpResponse packageZip)
+			throws Exception {
+		String folderName = String.valueOf(env) + "/Package/" + packageName + "/";
+		File file = new File(folderName, String.valueOf(packageID) + ".zip");
+		File parent = file.getParentFile();
+		if (parent != null)
+			parent.mkdirs();
+		InputStream is = packageZip.getEntity().getContent();
+		FileOutputStream fos = new FileOutputStream(file);
+		byte[] bytes = new byte[1024];
+		int length;
+		while ((length = is.read(bytes)) >= 0)
+			fos.write(bytes, 0, length);
+		is.close();
+		fos.close();
 	}
 
 	public static InputStream convertZipInputStreamToInputStream(ZipInputStream in) throws IOException {
@@ -84,7 +131,7 @@ public class Utility {
 		out.close();
 		return is;
 	}
-	
+
 	public static Document processxml(InputStream inpStream) throws Exception {
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
