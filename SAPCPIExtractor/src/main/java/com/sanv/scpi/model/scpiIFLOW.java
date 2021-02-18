@@ -64,9 +64,12 @@ public class scpiIFLOW implements Comparable<scpiIFLOW>{
 	}
 
 	public void setCreatedAt(String CreatedAt) {
+		/*
 		String epochString = CreatedAt.substring(CreatedAt.indexOf('(') + 1, CreatedAt.indexOf(')'));
 		long epoch = Long.parseLong(epochString);
 		this.CreatedAt = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date(epoch));
+		*/
+		this.CreatedAt = CreatedAt;
 	}
 
 	public void setModifiedBy(String ModifiedBy) {
@@ -74,9 +77,12 @@ public class scpiIFLOW implements Comparable<scpiIFLOW>{
 	}
 
 	public void setModifiedAt(String ModifiedAt) {
+		/*
 		String epochString = ModifiedAt.substring(ModifiedAt.indexOf('(')+1, ModifiedAt.indexOf(')'));
 		long epoch = Long.parseLong( epochString );		
 		this.ModifiedAt = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (epoch));
+		*/
+		this.ModifiedAt = ModifiedAt;
 	}
 
 	public void setType(String Type) {

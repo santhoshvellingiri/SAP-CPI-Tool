@@ -97,6 +97,11 @@ public class scpiRuntimeIflow implements Comparable<scpiRuntimeIflow>{
 	}
 
 	public void setdeployedOn(String inpVal) {
+		/*
+		String epochString = inpVal.substring(inpVal.indexOf('(') + 1, inpVal.indexOf(')'));
+		long epoch = Long.parseLong(epochString);
+		this.deployedOn = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date(epoch));
+		*/
 		this.deployedOn = inpVal;
 	}
 

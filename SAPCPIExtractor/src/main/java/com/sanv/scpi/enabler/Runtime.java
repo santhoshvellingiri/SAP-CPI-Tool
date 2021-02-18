@@ -212,5 +212,39 @@ public class Runtime {
 
 	}
 	
+	public static List<scpiRuntimeIflow> getRuntimeIFlows(tenantConfiguration tenant) throws Exception {
+
+		String apiUri = "";
+		String completeURL = "";
+
+		apiUri = "/api/v1//IntegrationRuntimeArtifacts?$format=json";
+		completeURL = "https://" + tenant.getTMNHost() + apiUri;
+
+		HttpResponse packageInfo = Utility.doGet(completeURL, tenant);
+		String packageInfoBody = EntityUtils.toString(packageInfo.getEntity(), "UTF-8");
+
+		JsonArray iflowIDArr = JsonParser.parseString(packageInfoBody).getAsJsonObject().get("d").getAsJsonObject()
+				.get("results").getAsJsonArray();
+
+		List<scpiRuntimeIflow> runIfo = new ArrayList<scpiRuntimeIflow>();
+		for (JsonElement iflowIDJE : iflowIDArr) {
+
+			JsonObject iflowIDJOB = iflowIDJE.getAsJsonObject();
+
+			scpiRuntimeIflow iFlo = new scpiRuntimeIflow();
+
+			iFlo.setId(null);
+			iFlo.setname(iflowIDJOB.get("Name").getAsString());
+			iFlo.setsymbolicName(iflowIDJOB.get("Id").getAsString());
+			iFlo.settype(iflowIDJOB.get("Type").getAsString());
+			iFlo.setversion(iflowIDJOB.get("Version").getAsString());
+			iFlo.setdeployedBy(iflowIDJOB.get("DeployedBy").getAsString());
+			iFlo.setdeployedOn(iflowIDJOB.get("DeployedOn").getAsString());
+			runIfo.add(iFlo);
+		}
+
+		return runIfo;
+
+	}
 
 }

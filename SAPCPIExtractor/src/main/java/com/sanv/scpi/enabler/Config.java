@@ -28,12 +28,12 @@ public class Config {
 
 		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
 
-		List<scpiRuntimeIflow> runIFo = Runtime.getRuntimeIFlowID(tenant);
+		List<scpiRuntimeIflow> runIFo = Runtime.getRuntimeIFlows(tenant);
 
 		int totalIflow = runIFo.size();
 
 		System.out.println("EVENT : Found " + totalIflow + " IFlows");
-		System.out.println("START : Fetching Runtime Information ");
+		System.out.println("START : Fetching Configuration Information ");
 
 		ArrayList<TreeMap<String, String>> al = new ArrayList<TreeMap<String, String>>();
 		TreeMap<String, String> colmName = new TreeMap<String, String>();
@@ -45,7 +45,7 @@ public class Config {
 
 				if (aIflo.getType().equals("VALUE_MAPPING"))
 					return;
-				System.out.format("Event : Extrating Runtime Data of IFlow %s %n", aIflo.getName());
+				System.out.format("Event : Extrating Configuration Data of IFlow %s %n", aIflo.getName());
 //				ArrayList<TreeMap<String,String>> ret = getIFlowConfigData(aIflo.getSymbolicName(), exVar, tenant);				
 //				if (ret != null)
 //					al.addAll(ret);
@@ -60,7 +60,7 @@ public class Config {
 				HttpResponse iflowZip;
 				iflowZip = Utility.doGet(completeURL, tenant);
 				if (iflowZip.getStatusLine().getStatusCode() == 404) {
-					System.out.format("Event : Integration design time artifact not found%n");
+					System.out.format("Event : Integration design time artifact of IFlow %s not found%n", aIflo.getName());
 					return;
 				}
 
@@ -328,7 +328,7 @@ public class Config {
 
 		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
 
-		List<scpiRuntimeIflow> runIFo = Runtime.getRuntimeIFlowID(tenant);
+		List<scpiRuntimeIflow> runIFo = Runtime.getRuntimeIFlows(tenant);
 
 		int totalIflow = runIFo.size();
 
