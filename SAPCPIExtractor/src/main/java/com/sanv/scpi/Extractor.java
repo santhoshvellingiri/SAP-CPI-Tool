@@ -85,7 +85,7 @@ public class Extractor {
 				file = new File(folderName, fileName);
 				Utility.writeFile(file, res);
 				break;
-			case "runtime":
+			case "runtime": //will not work for Cloud Foundry
 				List<scpiRuntimeIflow> runifl = Runtime.getRuntimeData(src);
 				fileName = src.getId() + "_runtime.json";
 				file = new File(folderName, fileName);
