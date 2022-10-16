@@ -16,6 +16,8 @@ import com.sanv.scpi.model.scpiIFLOW;
 import com.sanv.scpi.model.scpiPackage;
 import com.sanv.scpi.model.scpiPackageWithIFlow;
 import com.sanv.scpi.model.tenantConfiguration;
+import com.sanv.scpi.model.valueMap;
+import com.sanv.scpi.model.ValMapSchema;
 
 public class Design {
 
@@ -161,6 +163,71 @@ public class Design {
 
 		Collections.sort(iflow);
 		return iflow;
+	}
+
+	public static List<valueMap> getValueMapList(tenantConfiguration tenant) throws Exception {
+
+		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
+
+		String apiUri = "/api/v1/ValueMappingDesigntimeArtifacts?$format=json&$orderby=Name";
+		String completeURL = "https://" + tenant.getTMNHost() + apiUri;
+
+		HttpResponse vMapInfo = Utility.doGet(completeURL, tenant);
+		String vMapInfoBody = EntityUtils.toString(vMapInfo.getEntity(), "UTF-8");
+
+		JsonArray vMapArr = JsonParser.parseString(vMapInfoBody).getAsJsonObject().get("d").getAsJsonObject()
+				.get("results").getAsJsonArray();
+
+		List<valueMap> valMaps = new ArrayList<valueMap>();
+
+		for (JsonElement vMapJE : vMapArr) {
+
+			JsonObject vMapJOB = vMapJE.getAsJsonObject();
+
+			valueMap valMap = new valueMap();
+
+			valMap.setPackageId(vMapJOB.get("PackageId").getAsString());
+			valMap.setValueMapID(vMapJOB.get("Id").getAsString());
+			valMap.setValueMapName(vMapJOB.get("Name").getAsString());
+			valMap.setValMapSchema(getValueMapSchema(vMapJOB.get("Id").getAsString(),tenant));
+			valMaps.add(valMap);
+		}
+
+		Collections.sort(valMaps);
+		return valMaps;
+
+	}
+
+	public static List<ValMapSchema> getValueMapSchema(String vMapID,tenantConfiguration tenant) throws Exception {
+
+		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
+
+		String apiUri = String.format(
+				"/api/v1/ValueMappingDesigntimeArtifacts(Id='%s',Version='active')/ValMapSchema?$format=json",
+				vMapID);
+		String completeURL = "https://" + tenant.getTMNHost() + apiUri;
+
+		HttpResponse vMapSchInfo = Utility.doGet(completeURL, tenant);
+		String vMapSchBody = EntityUtils.toString(vMapSchInfo.getEntity(), "UTF-8");
+
+		JsonArray vMapSchArr = JsonParser.parseString(vMapSchBody).getAsJsonObject().get("d").getAsJsonObject()
+				.get("results").getAsJsonArray();
+
+		List<ValMapSchema> valMapSchms = new ArrayList<ValMapSchema>();
+
+		for (JsonElement vMapSchJE : vMapSchArr) {
+
+			JsonObject vMapSchJOB = vMapSchJE.getAsJsonObject();
+
+			ValMapSchema valMapSchm = new ValMapSchema();
+
+			valMapSchm.setSrcAgency(vMapSchJOB.get("SrcAgency").getAsString());
+			valMapSchm.setSrcId(vMapSchJOB.get("SrcId").getAsString());
+			valMapSchm.setTgtAgency(vMapSchJOB.get("TgtAgency").getAsString());
+			valMapSchm.setTgtId(vMapSchJOB.get("TgtId").getAsString());
+			valMapSchms.add(valMapSchm);
+		}
+		return valMapSchms;
 	}
 
 }
