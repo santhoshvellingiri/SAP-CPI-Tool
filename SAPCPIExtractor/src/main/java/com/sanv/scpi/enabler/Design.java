@@ -186,10 +186,13 @@ public class Design {
 
 			valueMap valMap = new valueMap();
 
+			String valMapId = vMapJOB.get("Id").getAsString();
+
 			valMap.setPackageId(vMapJOB.get("PackageId").getAsString());
-			valMap.setValueMapID(vMapJOB.get("Id").getAsString());
+			valMap.setValueMapID(valMapId);
 			valMap.setValueMapName(vMapJOB.get("Name").getAsString());
-			valMap.setValMapSchema(getValueMapSchema(vMapJOB.get("Id").getAsString(),tenant));
+			System.out.println("EVENT : Extracting Value Map " + valMapId);
+			valMap.setValMapSchema(getValueMapSchema(valMapId,tenant));
 			valMaps.add(valMap);
 		}
 
@@ -200,7 +203,7 @@ public class Design {
 
 	public static List<ValMapSchema> getValueMapSchema(String vMapID,tenantConfiguration tenant) throws Exception {
 
-		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
+//		System.out.println("EVENT : Connecting to Host " + tenant.getTMNHost() + " with user " + tenant.getUser());
 
 		String apiUri = String.format(
 				"/api/v1/ValueMappingDesigntimeArtifacts(Id='%s',Version='active')/ValMapSchema?$format=json",
