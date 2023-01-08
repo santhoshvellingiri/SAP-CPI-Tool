@@ -1,6 +1,6 @@
 package com.sanv.scpi.enabler;
 
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +20,8 @@ import org.w3c.dom.NodeList;
 import com.sanv.scpi.Utility;
 import com.sanv.scpi.model.scpiRuntimeIflow;
 import com.sanv.scpi.model.tenantConfiguration;
+
+import static com.sanv.scpi.Utility.convertInputStreamToString;
 
 public class Config {
 
@@ -57,6 +59,7 @@ public class Config {
 						aIflo.getSymbolicName());
 				completeURL = "https://" + tenant.getTMNHost() + apiUri;
 
+				//System.out.format("URL : %s %n", completeURL);
 				HttpResponse iflowZip;
 				iflowZip = Utility.doGet(completeURL, tenant);
 				if (iflowZip.getStatusLine().getStatusCode() == 404) {
@@ -70,15 +73,24 @@ public class Config {
 				}
 
 				ZipInputStream zipIn = new ZipInputStream(iflowZip.getEntity().getContent());
-				InputStream propertyFile = null;
+				Reader propertyFile = null;
 				InputStream iflowData = null;
 				ZipEntry entry = zipIn.getNextEntry();
 
 				while (entry != null) {
 					String entryName = entry.getName();
-					if (entryName.endsWith(".prop") && exVar.equalsIgnoreCase("y")) {
-						propertyFile = Utility.convertZipInputStreamToInputStream(zipIn);
-//						System.out.println(convertInputStreamToString(propertyFile));					
+					if (entryName.endsWith("parameters.prop") && exVar.equalsIgnoreCase("y")) {
+						InputStream propertyFileTemp = Utility.convertZipInputStreamToInputStream(zipIn);
+						BufferedReader reader = new BufferedReader(new InputStreamReader(propertyFileTemp, "UTF-8"));
+						ByteArrayOutputStream out = new ByteArrayOutputStream();
+						String currentLine;
+						while((currentLine = reader.readLine()) != null) {
+							if(currentLine.startsWith("#")) continue;
+							currentLine += "\n";
+							out.write(currentLine.getBytes());
+						}
+						propertyFile = new InputStreamReader(new ByteArrayInputStream(out.toByteArray()));
+						//System.out.println(convertInputStreamToString(new ByteArrayInputStream(out.toByteArray())));
 					} else if (entryName.endsWith(".iflw")) {
 						iflowData = Utility.convertZipInputStreamToInputStream(zipIn);
 //						System.out.println(convertInputStreamToString(iflowData));	
@@ -218,14 +230,24 @@ public class Config {
 		}
 
 		ZipInputStream zipIn = new ZipInputStream(iflowZip.getEntity().getContent());
-		InputStream propertyFile = null;
+		Reader propertyFile = null;
 		InputStream iflowData = null;
 		ZipEntry entry = zipIn.getNextEntry();
 
+
 		while (entry != null) {
 			String entryName = entry.getName();
-			if (entryName.endsWith(".prop") && exVar.equalsIgnoreCase("y")) {
-				propertyFile = Utility.convertZipInputStreamToInputStream(zipIn);
+			if (entryName.endsWith("parameters.prop") && exVar.equalsIgnoreCase("y")) {
+				InputStream propertyFileTemp = Utility.convertZipInputStreamToInputStream(zipIn);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(propertyFileTemp, "UTF-8"));
+				ByteArrayOutputStream out = new ByteArrayOutputStream();
+				String currentLine;
+				while((currentLine = reader.readLine()) != null) {
+					if(currentLine.startsWith("#")) continue;
+					currentLine += "\n";
+					out.write(currentLine.getBytes());
+				}
+				propertyFile = new InputStreamReader(new ByteArrayInputStream(out.toByteArray()));
 //				System.out.println(convertInputStreamToString(propertyFile));					
 			} else if (entryName.endsWith(".iflw")) {
 				iflowData = Utility.convertZipInputStreamToInputStream(zipIn);
@@ -237,6 +259,7 @@ public class Config {
 
 		Properties prop = new Properties();
 		if (exVar.equalsIgnoreCase("y") && propertyFile != null) {
+			//prop.load(propertyFile);
 			prop.load(propertyFile);
 		}
 

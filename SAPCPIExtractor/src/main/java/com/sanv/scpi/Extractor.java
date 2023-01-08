@@ -74,7 +74,7 @@ public class Extractor {
                 src.setPassword(s_pass);
             }
 
-            String folderName = String.valueOf(src.getName()) + "/";
+            String folderName = "Results/" + String.valueOf(src.getName()) + "/";
             String fileName = null;
             File file = null;
             // String exVar = comlin.getOptionValue("resolveExtVar");
